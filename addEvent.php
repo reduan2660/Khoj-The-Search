@@ -15,9 +15,6 @@ $title = $description = $category = $registration = $location = $qualification =
 $title_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    
-    
     // Validate name
     if(empty(trim($_POST["title"]))){
         $title_err = "Please enter a title.";
