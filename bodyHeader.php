@@ -8,7 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 ?>
 
 
-<header class="backdrop-opacity-10 shadow-md sticky top-0 min-w-screen h-20 bg-gray-800 flex flex-row justify-between items-center px-4 md:px-20">
+<header class="backdrop-blur-md shadow-md sticky top-0 min-w-screen h-20 bg-gray-800 flex flex-row justify-between items-center px-4 md:px-20">
     <div class="hidden md:block">
     <!-- For UI Purpose | WILL BE HIDDEN -->
     <button class=" cursor-default opacity-0 bg-blue-600 text-white font-bold px-6 py-2 rounded-lg"><?php

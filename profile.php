@@ -62,11 +62,6 @@
                 $institution = $row["institution"];
                 $profession =  $row["profession"];
                 $address = $row["address"];
-
-                
-                echo '<script type="text/javascript">
-                    vanillaToast.show("Updated");
-                </script>';
             } else{
                 echo "$stmt->error";
             }
@@ -86,7 +81,7 @@
         <!-- Form Section -->
         <section class="flex flex-col items-center">
             <div class="w-full md:w-2/4 flex flex-col items-start text-white my-4">
-                <div class="text-xl font-bold mt-4">Profile</div>
+                <div class="ml-4 md:ml-0 text-xl font-bold mt-4">Profile</div>
 
                 <form class="shadow-md w-full bg-gray-800 rounded px-8 pt-6 pb-8 mt-4" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
