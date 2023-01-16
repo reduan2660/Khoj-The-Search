@@ -62,6 +62,9 @@
                 $institution = $row["institution"];
                 $profession =  $row["profession"];
                 $address = $row["address"];
+
+
+                $_SESSION["name"] = $row["name"];
             } else{
                 echo "$stmt->error";
             }

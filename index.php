@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
     //   echo "id: " . $row["eventid"]. " - Name: " . $row["name"]. " " . "<br>";
     // }
   } else {
-    echo "0 results";
+    // echo "0 results";
   }
 // Close connection
 mysqli_close($link);
@@ -37,13 +37,13 @@ mysqli_close($link);
         <?php include 'bodyHeader.php';?>
 
         <!-- Content -->
-        <section class="flex flex-col items-center">
+        <section class="flex flex-col items-center mt-2">
 
         <!-- Loop -->
         
         <?php foreach($result as $key=>$event): ?>
             
-            <div class="w-full md:w-2/4 flex flex-row justify-between items-center bg-gray-800 rounded-xl text-white my-4">
+            <div class="w-full md:w-2/4 flex flex-row justify-between items-center bg-gray-800 md:rounded-xl text-white my-4">
                 <!-- Information -->
                 <div class="flex flex-col items-start justify-between px-8 py-6">
                     <div class="font-bold text-2xl"><?php echo $event["name"] ?></div>

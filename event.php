@@ -122,7 +122,7 @@
                 </div>
 
                 <!-- Table -->
-                    <div class=" w-full  md:w-2/4 relative overflow-x-auto rounded mt-4">
+                    <div class="w-full  md:w-2/4 relative overflow-x-auto rounded my-4">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
