@@ -42,7 +42,8 @@ mysqli_close($link);
         <!-- Loop -->
         
         <?php foreach($result as $key=>$event): ?>
-                <div class="w-full md:w-2/4 flex flex-row justify-between items-center bg-gray-800 rounded-xl text-white my-4">
+            
+            <div class="w-full md:w-2/4 flex flex-row justify-between items-center bg-gray-800 rounded-xl text-white my-4">
                 <!-- Information -->
                 <div class="flex flex-col items-start justify-between px-8 py-6">
                     <div class="font-bold text-2xl"><?php echo $event["name"] ?></div>
@@ -53,9 +54,10 @@ mysqli_close($link);
 
                 <!-- Details -->
                 <div class="flex flex-col items-end">
-                    <button class="bg-blue-600 text-white font-bold px-6 py-2 rounded-lg mr-12">Details</button>
+                    <a href="<?php echo "event.php?id={$event["eventid"]}" ?>"><button class="bg-blue-600 text-white font-bold px-6 py-2 rounded-lg mr-12">Details</button></a>
                 </div>
             </div>
+
             <?php endforeach; ?>
         
 
