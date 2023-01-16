@@ -12,7 +12,7 @@
     }
 
     // Profile Data
-    $sql = "SELECT id, name, phone, mail, institution, address, profession FROM Users where id = {$_SESSION["id"]}";
+    $sql = "SELECT id, name, phone, mail, institution, address, profession FROM users where id = {$_SESSION["id"]}";
     $result = $link->query($sql);
     $row = $result->fetch_assoc();
 
@@ -63,8 +63,7 @@
                 $profession =  $row["profession"];
                 $address = $row["address"];
 
-
-                $_SESSION["name"] = $row["name"];
+                $_SESSION["name"] = $name;
             } else{
                 echo "$stmt->error";
             }
@@ -79,12 +78,12 @@
 <html lang="en">
 <?php include 'header.php';?>
 <body>
-    <section class="min-h-screen min-w-screen bg-gray-50 dark:bg-gray-900">
+    <section class="min-h-screen min-w-screen bg-gray-900">
         <?php include 'bodyHeader.php';?>
         <!-- Form Section -->
         <section class="flex flex-col items-center">
-            <div class="w-full md:w-2/4 flex flex-col items-start text-white my-4">
-                <div class="ml-4 md:ml-0 text-xl font-bold mt-4">Profile</div>
+            <div class="w-full lg:w-2/4 flex flex-col items-start text-white my-4">
+                <div class="ml-4 lg:ml-0 text-xl font-bold mt-4">Profile</div>
 
                 <form class="shadow-md w-full bg-gray-800 rounded px-8 pt-6 pb-8 mt-4" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 

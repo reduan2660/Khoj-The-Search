@@ -3,7 +3,7 @@
     server with default setting (user 'root' with no password) */
     define('DB_SERVER', 'alvereduan.me');
     define('DB_USERNAME', 'alveredu_khojthesearch_admin');
-    define('DB_PASSWORD', '4m*dvVZnt$@%U39eB26V6c#3j6xW');
+    define('DB_PASSWORD', '');
     define('DB_NAME', 'alveredu_khojthesearch');
     
     /* Attempt to connect to MySQL database */

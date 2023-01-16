@@ -80,28 +80,28 @@
 <html lang="en">
 <?php include 'header.php';?>
 <body>
-    <section class="min-h-screen min-w-screen bg-gray-50 dark:bg-gray-900">
+    <section class="min-h-screen min-w-screen bg-gray-900">
         
         <?php include 'bodyHeader.php';?>
 
         <!-- Content -->
-        <section class="flex flex-col items-center text-white">
+        <section class="flex flex-col items-center text-white px-6 lg:px-1">
             <?php foreach($result as $key=>$event): ?>
-                <div class="w-full py-4 px-4 md:w-2/4 flex flex-row justify-between items-center rounded-xl text-white my-4">
+                <div class="w-full py-4 px-4 lg:w-2/4 flex flex-row justify-between items-center rounded-xl text-white my-4">
                     <!-- Name & Subscribe -->
-                    <div class="text-3xl font-bold"><?php echo $event["name"] ?></div>
+                    <div class="text-4xl lg:text-3xl font-bold"><?php echo $event["name"] ?></div>
                     <div><button class="bg-blue-600 text-white font-bold px-6 py-2 rounded-lg mr-6">Subscribe</button></div>
                 </div>
                 
                 <!-- Description -->
-                <div class="w-full text-lg py-4 px-4 mt-4 md:w-2/4 flex flex-col items-start">
+                <div class="w-full text-2xl lg:text-lg py-4 px-4 mt-4 lg:w-2/4 flex flex-col items-start">
 
                     <div class="font-bold mb-3">Description</div>
-                    <div><?php echo $event["description"] ?></div>
+                    <div class=""><?php echo $event["description"] ?></div>
                 </div>
 
                 <!-- Category -->
-                <div class="w-full text-lg py-4 px-4 mt-4 md:w-2/4 flex flex-col items-start">
+                <div class="w-full text-2xl lg:text-lg py-4 px-4 mt-4 lg:w-2/4 flex flex-col items-start">
 
                     <div><span class="font-bold">Category:</span> <span class="italic"><?php echo $event["category"] ?></span></div>
                     <div></div>
@@ -109,22 +109,22 @@
 
                 <!-- Registration -->
                 <?php if(!empty(trim($event["registration"]))): ?>
-                    <div class="w-full text-lg py-4 px-4 mt-4 md:w-2/4 flex flex-col items-start">
+                    <div class="w-full text-2xl lg:text-lg py-4 px-4 mt-4 lg:w-2/4 flex flex-col items-start">
 
                         <div><span class="font-bold">Registration:</span> <span class="italic"><?php echo $event["registration"] ?></span></div>
                         <div></div>
                     </div>
                 <?php endif; ?>
 
-                <div class="w-full text-lg py-4 px-4 mt-4 md:w-2/4 flex flex-row items-center justify-between">
+                <div class="w-full text-2xl lg:text-lg py-4 px-4 mt-4 lg:w-2/4 flex flex-row items-center justify-between">
                     <div><span class="font-bold">Timeline</span></div>
                     <button type="button" id="openModalBtn" class="bg-blue-600 text-white font-bold px-4 py-1 rounded-lg mr-6">Add Timeline</button>
                 </div>
 
                 <!-- Table -->
-                    <div class="w-full  md:w-2/4 relative overflow-x-auto rounded my-4">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <div class="w-full  lg:w-2/4 relative overflow-x-auto rounded my-4">
+                        <table class="w-full text-sm text-left text-white">
+                            <thead class="text-xs uppercase bg-gray-50 bg-gray-700 text-white">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
                                         Name
@@ -138,15 +138,17 @@
                                     <th scope="col" class="px-6 py-3">
                                         Date of End
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Action
-                                    </th>
+                                    <?php if($_SESSION["staff"] == true): ?>
+                                        <th scope="col" class="px-6 py-3">
+                                            Action
+                                        </th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php foreach($timelineResult as $key=>$row): ?>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <tr class="border-b bg-gray-800 border-gray-700">
+                                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-white">
                                        <?php echo $row["name"]; ?>
                                     </th>
                                     <td class="px-6 py-4">
@@ -158,9 +160,11 @@
                                     <td class="px-6 py-4">
                                         <?php echo $row["dateOfEnd"]; ?>
                                     </td>
-                                    <td class="px-6 py-4">
-                                     <a href="<?php echo htmlspecialchars("event.php?id={$eventId}&deleteTimeLine={$row["timelineid"]}"); ?>"><button type="submit" id="openModalBtn" class="bg-red-300 text-white font-bold px-4 py-1 rounded-lg mr-6">Delete</button></a>
-                                    </td>
+                                    <?php if($_SESSION["staff"] == true): ?>
+                                        <td class="px-6 py-4">
+                                        <a href="<?php echo htmlspecialchars("event.php?id={$eventId}&deleteTimeLine={$row["timelineid"]}"); ?>"><button type="submit" id="openModalBtn" class="bg-red-300 text-white font-bold px-4 py-1 rounded-lg mr-6">Delete</button></a>
+                                        </td>
+                                    <?php endif; ?>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -175,7 +179,7 @@
     
     <!-- Add Timeline Modal -->
     <div id="openTimelineModal" class="hidden absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50 backdrop-blur rounded-lg text-white">
-        <div class="w-full md:w-1/4 p-6 bg-gray-700 rounded-lg shadow-lg">
+        <div class="w-full lg:w-1/4 p-6 bg-gray-700 rounded-lg shadow-lg">
             <div class="flex items-center justify-between">
                 <h3 class="text-2xl">New Timeline</h3>
                 <div><button id="closeModalBtn" class="bg-blue-600 text-white font-bold px-3 py-1 rounded-full ">X</button></div>

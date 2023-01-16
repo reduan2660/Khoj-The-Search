@@ -32,18 +32,18 @@ mysqli_close($link);
 <html lang="en">
 <?php include 'header.php';?>
 <body>
-    <section class="min-h-screen min-w-screen bg-gray-50 dark:bg-gray-900">
+    <section class="min-h-screen min-w-screen bg-gray-900">
         
         <?php include 'bodyHeader.php';?>
 
         <!-- Content -->
-        <section class="flex flex-col items-center mt-2">
+        <section class="flex flex-col items-center mt-2 px-4 lg:px-1">
 
         <!-- Loop -->
         
         <?php foreach($result as $key=>$event): ?>
             
-            <div class="w-full md:w-2/4 flex flex-row justify-between items-center bg-gray-800 md:rounded-xl text-white my-4">
+            <div class="w-full lg:w-2/4 flex flex-row justify-between items-center bg-gray-800 rounded-xl text-white my-4">
                 <!-- Information -->
                 <div class="flex flex-col items-start justify-between px-8 py-6">
                     <div class="font-bold text-2xl"><?php echo $event["name"] ?></div>
@@ -63,10 +63,12 @@ mysqli_close($link);
 
         </section>
     
-        <!-- Floating Plus -->
-        <section class="fixed bottom-12 right-12">
-        <a href="addEvent.php"><button class="bg-blue-600 text-white font-bold px-6 py-2 text-2xl rounded-full"> + </button> </a>
-        </section>
+        <!-- Floating Plus | For Staffs-->
+        <?php if($_SESSION["staff"] == true): ?>
+            <section class="fixed bottom-12 right-12">
+                <a href="addEvent.php"><button class="bg-blue-600 text-white font-bold px-6 py-2 text-2xl rounded-full">  + </button> </a>
+            </section>
+        <?php endif; ?>
     </section>
 </body>
 </html>

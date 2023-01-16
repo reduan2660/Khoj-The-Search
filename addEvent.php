@@ -6,7 +6,7 @@ require_once "config.php";
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["staff"] != true){
     header("location: login.php");
     exit;
 }
@@ -66,13 +66,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <?php include 'header.php';?>
 <body>
-    <section class="min-h-screen min-w-screen bg-gray-50 dark:bg-gray-900">
+    <section class="min-h-screen min-w-screen bg-gray-900">
     <?php include 'bodyHeader.php';?>
 
     <!-- Form Section -->
     <section class="flex flex-col items-center">
-    <div class="w-full md:w-2/4 flex flex-col items-start text-white my-4">
-        <div class="ml-4 md:ml-0 text-xl font-bold mt-4">Add an event</div>
+    <div class="w-full lg:w-2/4 flex flex-col items-start text-white my-4">
+        <div class="ml-4 lg:ml-0 text-xl font-bold mt-4">Add an event</div>
 
 
         <form class="shadow-md w-full bg-gray-800 rounded px-8 pt-6 pb-8 mt-4" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -128,8 +128,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <!-- Onsite -->
 
         <div class="mt-8 ml-4">
-            <div class="md:w-1/3"></div>
-            <label class="md:w-2/3 block text-gray-500 font-bold">
+            <div class="lg:w-1/3"></div>
+            <label class="lg:w-2/3 block text-gray-500 font-bold">
             <input name="onsite" value="1" class="mr-2 leading-tight" type="checkbox">
             <span class="text-sm text-white">
                 Onsite

@@ -14,7 +14,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <html lang="en">
 <?php include 'header.php';?>
 <body>
-    <section class="min-h-screen min-w-screen bg-gray-50 dark:bg-gray-900">
+    <section class="min-h-screen min-w-screen bg-gray-900">
     <?php include 'bodyHeader.php';?>
 
     </section>
